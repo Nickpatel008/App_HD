@@ -2,14 +2,76 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 .bg__header{
     background: rgba(163, 162, 162, 0.555);
-    height: 80vh;
+    height: 95vh;
 }
 
 .sign_main_div{
     background: white;
     min-height: 100vh;
 }
+
+.signup__row{
+    min-height: 100vh;
+}
+ 
+
+.signup__form__header h1{
+font-weight: 900;
+    font-size: 3.5em;
+}
+.signup__form__header h1 span{
+    font-size: 1.5em;
+    color: rgb(222, 61, 222)
+}
+
+.right__side{
+    min-height: 100vh;
+    background: radial-gradient(red, purple) !important;
+    display: contents;
+    justify-items: center;
+}
+
+.keyIcon , .emailIcon {
+    font-size: 24px !important;
+    margin-top: 10px;
+}
+
+.goBack__Link{
+    font-size: 25px;
+    font-weight: 500;
+    color: black;
+    position: relative;
+}
+
+.goBack__Link span{
+    font-size: 30px;
+    font-weight: 900;
+    color: rgba(128, 0, 128, 0.835);
+}
+.goBack__Link::before{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        top: 30px;
+        bottom: 0;
+        left: 0;
+        background-color: purple;
+        visibility: hidden;
+        transform: scaleX(0);
+        transition: all .3s ease-in-out;
+}
+
+.goBack__Link:hover::before{
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+.animate__animated.fadeInRight {
+    --animate-duration: .6s;
+  }

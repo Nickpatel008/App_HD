@@ -3,7 +3,7 @@ import React from "react";
 const Index = () => {
   return (
     <>
-      <div class="container my-5">
+      <div id="OurTeam" class="container my-5">
         <section class="team-section text-center dark-grey-text">
           <h3 class="font-weight-bold pb-2 mb-4">Our amazing team</h3>
           <p class="text-muted w-responsive mx-auto mb-5">
@@ -14,13 +14,16 @@ const Index = () => {
 
           <div class="row">
             <div class="col-lg-3 col-md-6 mb-4">
-              <div class="avatar mx-auto">
+              <div class="avatar mx-auto view overlay">
                 <img
                   src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg"
-                  class="rounded-circle z-depth-1"
+                  class="rounded-circle z-depth-1 img-fluid"
                   alt="Sample avatar"
                 />
+
+                <div class="mask waves-effect waves-light rgba-white-slight"></div>
               </div>
+
               <h5 class="font-weight-bold mt-4 mb-3">Anna Williams</h5>
               <p class="text-uppercase blue-text">
                 <strong>Graphic designer</strong>
@@ -43,12 +46,13 @@ const Index = () => {
             </div>
 
             <div class="col-lg-3 col-md-6 mb-4">
-              <div class="avatar mx-auto">
+              <div class="avatar mx-auto  view overlay">
                 <img
                   src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg"
                   class="rounded-circle z-depth-1"
                   alt="Sample avatar"
                 />
+                <div class="mask waves-effect waves-light rgba-white-slight"></div>
               </div>
               <h5 class="font-weight-bold mt-4 mb-3">John Doe</h5>
               <p class="text-uppercase blue-text">
@@ -69,12 +73,13 @@ const Index = () => {
             </div>
 
             <div class="col-lg-3 col-md-6 mb-4">
-              <div class="avatar mx-auto">
+              <div class="avatar mx-auto  view overlay">
                 <img
                   src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
                   class="rounded-circle z-depth-1"
                   alt="Sample avatar"
                 />
+                <div class="mask waves-effect waves-light rgba-white-slight"></div>
               </div>
               <h5 class="font-weight-bold mt-4 mb-3">Maria Smith</h5>
               <p class="text-uppercase blue-text">
@@ -98,12 +103,13 @@ const Index = () => {
             </div>
 
             <div class="col-lg-3 col-md-6 mb-4">
-              <div class="avatar mx-auto">
+              <div class="avatar mx-auto  view overlay">
                 <img
                   src="https://mdbootstrap.com/img/Photos/Avatars/img%20(32).jpg"
                   class="rounded-circle z-depth-1"
                   alt="Sample avatar"
                 />
+                <div class="mask waves-effect waves-light rgba-white-slight"></div>
               </div>
               <h5 class="font-weight-bold mt-4 mb-3">Tom Adams</h5>
               <p class="text-uppercase blue-text">

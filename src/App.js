@@ -1,19 +1,20 @@
-import './Assets/CSS/style.css'
-import  MainSection  from './components/MainSection/index'
-import  SignUp  from './components/SignUp/index'
-
-import 'react-router-dom'
-import { Route, Routes } from 'react-router-dom'
+import { useState } from "react";
+import "./Assets/CSS/style.css";
+import PrivateRoutes from "./components/common/PrivateRoutes";
+import Layout from "./components/Layout";
 
 function App() {
+  const [isPath, setIsPath] = useState([]);
+  const handlePath = (handlePath) => {
+    // setIsPath(handlePath);
+    isPath.push(handlePath);
+  };
+
   return (
     <div className="App">
-
-     <Routes>
-      <Route path='/' element={<MainSection />}></Route>
-      <Route path='/signUp' element={<SignUp />}></Route>
-     </Routes>
-
+      <Layout isPath={isPath}>
+        <PrivateRoutes handlePath={handlePath} />
+      </Layout>
     </div>
   );
 }

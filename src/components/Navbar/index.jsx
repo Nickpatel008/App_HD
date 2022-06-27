@@ -1,16 +1,13 @@
 import React from "react";
-import login__Modal_Img from '../../Assets/images/User_Profile-.png'
+import login__Modal_Img from "../../Assets/images/User_Profile-.png";
 import { NavLink, useNavigate } from "react-router-dom";
 
-
-
 const Index = () => {
-
   const navigate = useNavigate();
 
   const handleSignUp = () => {
-    navigate('/signUp')
-  }
+    navigate("/signUp");
+  };
 
   return (
     <>
@@ -43,6 +40,11 @@ const Index = () => {
                   </a>
                 </li>
                 <li class="nav-item">
+                  <NavLink class="nav-link" to="/feed">
+                    Feed
+                  </NavLink>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="#">
                     Features
                   </a>
@@ -53,15 +55,19 @@ const Index = () => {
                   </a>
                 </li>
                 <li class="nav-item">
-
+                  <a class="nav-link" href="#OurTeam">
+                    OurTeam
+                  </a>
+                </li>
+                <li class="nav-item">
                   <button
-                      type="button"
-                      class="btn btn-orange btn-sm btn-rounded mx-0"
-                      data-toggle="modal"
-                      data-target="#basicExampleModal"
-                      >
-                      Log In
-                    </button>
+                    type="button"
+                    class="btn btn-orange btn-sm btn-rounded mx-0"
+                    data-toggle="modal"
+                    data-target="#basicExampleModal"
+                  >
+                    Log In
+                  </button>
                 </li>
                 {/* </ul>
               <ul class="navbar-nav ml-auto nav-flex-icons"> */}
@@ -80,7 +86,6 @@ const Index = () => {
           </div>
         </nav>
 
-       
         {/* MODELS */}
 
         <div
@@ -95,12 +100,9 @@ const Index = () => {
             <div class="modal-content">
               <div class="modal-header">
                 <h4 class="modal-title" id="exampleModalLabel">
-                Sign in 
+                  Sign in
                 </h4>
-                <button
-                  type="button"
-                  class="close"
-                >
+                <button type="button" class="close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -128,8 +130,6 @@ const Index = () => {
                             <div class="row d-flex justify-content-center">
                               <div class="col-md-12">
                                 <form class="text-center" action="#!">
-                                 
-
                                   <input
                                     type="email"
                                     id="defaultLoginFormEmail"
@@ -174,7 +174,12 @@ const Index = () => {
 
                                   <p>
                                     Not a member?
-                                    <a href="">Register</a>
+                                    <NavLink to="/signUp">
+                                      <span className="">
+                                        <span> Register </span>
+                                      </span>
+                                    </NavLink>
+                                    <a href=""></a>
                                   </p>
 
                                   <p>or sign in with:</p>
@@ -217,11 +222,6 @@ const Index = () => {
           </div>
         </div>
       </header>
-
-
-    
-
-
     </>
   );
 };
