@@ -1,62 +1,155 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import FeedHome from "../Feed/FeedHome/index";
 import AllComm from "../Feed/AllCommunities/index";
+import Subscription from "../Feed/Subscription/index";
+import Bookmark from "../Feed/Bookmark/index";
 
 const Index = () => {
-  const [isSelected, setIsSelected] = useState(false);
+  const [isSelected, setIsSelected] = useState(1);
+  const [isPath, setIsPath] = useState(<FeedHome />);
+
   const leftSideBar = [
-    { name: "Active", value: 1, path: <FeedHome /> },
-    { name: "Link 2", value: 2 },
-    { name: "LInk 3", value: 3 },
+    {
+      name: "Active",
+      value: 1,
+      path: <FeedHome />,
+      iconTag: "fa-solid fa-house",
+    },
+    { name: "Collaborate", value: 2, iconTag: "fa-solid fa-user-group" },
+    {
+      name: "Subscription",
+      value: 3,
+      iconTag: "fa-solid fa-dollar-sign",
+      path: <Subscription />,
+    },
+    {
+      name: "Bookmarks",
+      value: 4,
+      iconTag: "fa-regular fa-bookmark",
+      path: <Bookmark />,
+    },
   ];
   const RightSideBar = [
-    { name: "Node", value: 4, path: <AllComm tag={1} /> },
-    { name: "React", value: 5, path: <AllComm tag={2} /> },
-    { name: "All", value: 6, path: <AllComm tag={3} /> },
+    {
+      name: "Node",
+      value: 5,
+      imgTag:
+        "https://seeklogo.com/images/N/nodejs-logo-FBE122E377-seeklogo.com.png",
+      path: <AllComm tag={1} />,
+    },
+    {
+      name: "React",
+      value: 6,
+      imgTag:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
+      path: <AllComm tag={2} />,
+    },
+    {
+      name: "All",
+      value: 7,
+      imgTag: "https://mdbootstrap.com/img/Photos/Avatars/avatar-5.webp",
+
+      path: <AllComm tag={3} />,
+    },
   ];
 
   console.log("isSelected", isSelected);
 
   const handlePages = (element) => {
-    setIsSelected(element);
+    setIsSelected(element.value);
+    setIsPath(element.path);
     console.log("1", element);
   };
+
   return (
     <>
       <section>
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-3">
-              <nav class="nav flex-column pink lighten-3 py-4 mb-r font-weight-bold z-depth-1">
+        <div className="container-fluid HomeFeed__layout">
+          <div className="row pt-4">
+            <div className="col-lg-3 left__side__nav__menu ">
+              <nav class="nav flex-column lighten-3  mb-r font-weight-bold z-depth-0 pb-5 left__side__nav__menu__wrapper">
                 {leftSideBar.map((element, index) => {
                   return (
-                    <a
-                      class="nav-link active white-text"
-                      href="#"
-                      key={index}
-                      onClick={() => handlePages(element)}
-                    >
-                      {element.name}
-                    </a>
+                    <div className="">
+                      <div class="list-group">
+                        <a
+                          className={
+                            isSelected == element.value
+                              ? "list-group-item list-group-item-action view overlay active"
+                              : "list-group-item list-group-item-action view overlay"
+                          }
+                          key={index}
+                          onClick={() => handlePages(element)}
+                        >
+                          <span className="iconTags">
+                            <i className={element.iconTag}></i>
+                          </span>
+                          <span className="iconTag__text ml-2">
+                            {element.name}
+                          </span>
+                          <div class="mask waves-effect waves-dark rgba-dark-slight"></div>
+                        </a>
+                      </div>
+                    </div>
                   );
                 })}
+
+                <hr />
+                <a
+                  class="list-group-item list-group-item-action view overlay "
+                  onClick={() => handlePages(8)}
+                >
+                  <span className="iconTags">
+                    <i class="fa-solid fa-layer-group"></i>
+                  </span>
+                  <span className="iconTag__text ml-2"> All Communities </span>
+                  <div class="mask waves-effect waves-dark rgba-dark-slight"></div>
+                </a>
               </nav>
             </div>
-            <div className="col-lg-6">
-              {isSelected ? isSelected.path : <FeedHome />}
-            </div>
+            <div className="col-lg-6">{isPath}</div>
             <div className="col-lg-3">
-              <nav class="nav flex-column pink lighten-3 py-4 mb-r font-weight-bold z-depth-1">
+              <nav class="nav flex-column lighten-3 mb-r font-weight-bold z-depth-0 right__side__nav__menu__wrapper">
+                <div className="d-flex justify-content-between px-3">
+                  <div className="mb-3">
+                    <span>Top Commnunities</span>
+                  </div>
+                  <div className="">
+                    <a className="">
+                      <span> See All </span>
+                    </a>
+                  </div>
+                </div>
+
                 {RightSideBar.map((element, index) => {
                   return (
-                    <a
-                      class="nav-link active white-text"
-                      href="#"
-                      key={index}
-                      onClick={() => handlePages(element)}
-                    >
-                      {element.name}
-                    </a>
+                    <div className="right__side__nav">
+                      <div class="list-group">
+                        <a
+                          className={
+                            isSelected == element.value
+                              ? "list-group-item list-group-item-action view overlay active"
+                              : "list-group-item list-group-item-action view overlay"
+                          }
+                          key={index}
+                          onClick={() => handlePages(element)}
+                        >
+                          <div className="d-flex align-items-center">
+                            <img
+                              src={element.imgTag}
+                              class="rounded-circle z-depth-0"
+                              alt="avatar image"
+                              height="30"
+                            />
+                            <span className="iconTag__text ml-3">
+                              {element.name}
+                            </span>
+                            <div class="mask waves-effect waves-dark rgba-dark-slight"></div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
                   );
                 })}
               </nav>

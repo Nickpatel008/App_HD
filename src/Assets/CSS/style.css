@@ -5,33 +5,45 @@
     scroll-behavior: smooth;
 }
 
+html{
+    font-size: 12px;
+}
+
 .bg__header{
     background: rgba(163, 162, 162, 0.555);
     height: 95vh;
+}
+
+.main__signup__dev{
+    max-height: 100vh;
+    overflow: hidden;
 }
 
 .sign_main_div{
     background: white;
     min-height: 100vh;
 }
-
+.form__contenet span{
+    font-size: 1.2rem;
+}
 .signup__row{
     min-height: 100vh;
 }
- 
 
 .signup__form__header h1{
-font-weight: 900;
+    font-weight: 900;
     font-size: 3.5em;
 }
 .signup__form__header h1 span{
     font-size: 1.5em;
     color: rgb(222, 61, 222)
 }
+.formSignUp{
+    background-color: red;
+}
 
 .right__side{
     min-height: 100vh;
-    background: radial-gradient(red, purple) !important;
     display: contents;
     justify-items: center;
 }
@@ -75,3 +87,85 @@ font-weight: 900;
 .animate__animated.fadeInRight {
     --animate-duration: .6s;
   }
+
+  .purple-border textarea {
+    border: 1px solid #ba68c83a;
+}
+.purple-border .form-control:focus {
+    border: 1px solid #ba68c8;
+    box-shadow: 0 0 0 0.2rem rgba(186, 104, 200, .25);
+}
+
+/* FEED HOME */
+
+.bgTransparent{
+    background: transparent;
+}
+
+ .create__post{
+    background: rgb(86 86 86 / 10%);
+    border-radius: 10px;
+ }
+
+.crate__post__tools ul li{
+    border: none;
+    width: auto;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.craete__post__form textarea{
+    min-height: 100px;
+}
+
+.comment__tools ul li {
+    border: none;
+    padding: 10px;
+}
+
+.comment__part{
+    border-bottom: 1px solid #b9b6b6d8;
+}
+
+/* LEFT MENU HOME FEED */
+
+.left__side__nav__menu__wrapper , .right__side__nav__menu__wrapper{
+    /* background: rgba(201, 201, 201, 0.759); */
+    top: 5%;
+    position: sticky;
+}
+
+.left__side__nav__menu{
+    /* background: rgba(201, 201, 201, 0.759); */
+    top: 0;
+    position: sticky;
+    padding: 0;
+}
+
+.left__side__nav__menu .list-group a{
+    background: transparent;
+    border: none;
+    color: gray;
+}
+ 
+
+.left__side__nav__menu .active{
+    background: rgb(230, 215, 215);
+    border: none;
+}
+
+.left__side__nav__menu .active .iconTags{
+    color: rgb(50, 75, 232);
+}
+
+.left__side__nav__menu .active .iconTag__text{
+    color: rgb(50, 75, 232);
+}
+
+.right__side__nav a{
+    border: none;
+}
+
+.HomeFeed__layout{
+    padding: 0 10%;
+}

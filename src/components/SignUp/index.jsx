@@ -11,12 +11,12 @@ const Index = () => {
         <div className="container-fluid  signUp__wrapper">
           <div className="row align-items-center signup__row">
             <div className="col-lg-6 left__side">
-              <img src={auth_IMG} className="animate__animated fadeIn" />
+              <img src={auth_IMG} className="animate__animated fadeIn img-fluid" />
             </div>
             <div className="col-lg-6 right__side">
-              <div className="signup__form__header animate__animated fadeInRight">
+              <div className="signup__form__header animate__animated fadeInRight py-5">
                 <div className="inner-row px-5">
-                  <div className="">
+                  <div className="form__contenet">
                     <span className="font-weight-bold text-uppercase">
                       start for free
                     </span>

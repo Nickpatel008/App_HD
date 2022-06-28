@@ -1,19 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import login__Modal_Img from "../../Assets/images/User_Profile-.png";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const Index = () => {
   const navigate = useNavigate();
+  const FeedPagePath = useLocation();
 
-  const handleSignUp = () => {
-    navigate("/signUp");
-  };
+  const [isFeedPage, setIsFeedPage] = useState(false);
+
+  useEffect(() => {
+    console.log("111", FeedPagePath.pathname);
+    if (FeedPagePath.pathname == "/feed") {
+      setIsFeedPage(true);
+    } else {
+      setIsFeedPage(false);
+    }
+  }, [FeedPagePath]);
 
   return (
     <>
       <header>
         <nav class="navbar navbar-expand-lg navbar-dark orange lighten-1">
-          <div className="container">
+          <div
+            className={
+              isFeedPage ? "container-fluid HomeFeed__layout" : "container"
+            }
+          >
             <a class="navbar-brand" href="#">
               APP
             </a>
