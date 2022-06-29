@@ -63,8 +63,8 @@ const Index = () => {
             <div className="">
               <div className="all__post_feed my-3 rounded">
                 <div className="comment__wrapper">
-                  <div className="comment__part d-flex p-3">
-                    <div className="cmt__user__iamge">
+                  <div className="comment__part row d-flex p-3">
+                    <div className="col-lg-1 cmt__user__iamge">
                       <a class="nav-link p-0" href="#">
                         <img
                           src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.webp"
@@ -74,7 +74,7 @@ const Index = () => {
                         />
                       </a>
                     </div>
-                    <div className="cmt__contents px-3">
+                    <div className="col-lg-11 cmt__contents px-3">
                       <div className="user__details d-flex">
                         <h5> User Name </h5>
                         <span> @user123 </span>
@@ -140,8 +140,8 @@ const Index = () => {
                     </div>
                   </div>
 
-                  <div className="comment__part d-flex p-3">
-                    <div className="cmt__user__iamge">
+                  <div className="comment__part row d-flex p-3">
+                    <div className="col-lg-1 cmt__user__iamge">
                       <a class="nav-link p-0" href="#">
                         <img
                           src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.webp"
@@ -151,7 +151,7 @@ const Index = () => {
                         />
                       </a>
                     </div>
-                    <div className="cmt__contents px-3">
+                    <div className="col-lg-11 cmt__contents px-3">
                       <div className="user__details d-flex">
                         <h5> User Name </h5>
                         <span> @user123 </span>
@@ -217,8 +217,8 @@ const Index = () => {
                     </div>
                   </div>
 
-                  <div className="comment__part d-flex p-3">
-                    <div className="cmt__user__iamge">
+                  <div className="comment__part row d-flex p-3">
+                    <div className="col-lg-1 cmt__user__iamge">
                       <a class="nav-link p-0" href="#">
                         <img
                           src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.webp"
@@ -228,7 +228,7 @@ const Index = () => {
                         />
                       </a>
                     </div>
-                    <div className="cmt__contents px-3">
+                    <div className="col-lg-11 cmt__contents px-3">
                       <div className="user__details d-flex">
                         <h5> User Name </h5>
                         <span> @user123 </span>
@@ -294,8 +294,8 @@ const Index = () => {
                     </div>
                   </div>
 
-                  <div className="comment__part d-flex p-3">
-                    <div className="cmt__user__iamge">
+                  <div className="comment__part row d-flex p-3">
+                    <div className="col-lg-1 cmt__user__iamge">
                       <a class="nav-link p-0" href="#">
                         <img
                           src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.webp"
@@ -305,7 +305,7 @@ const Index = () => {
                         />
                       </a>
                     </div>
-                    <div className="cmt__contents px-3">
+                    <div className="col-lg-11 cmt__contents px-3">
                       <div className="user__details d-flex">
                         <h5> User Name </h5>
                         <span> @user123 </span>
@@ -371,8 +371,8 @@ const Index = () => {
                     </div>
                   </div>
 
-                  <div className="comment__part d-flex p-3">
-                    <div className="cmt__user__iamge">
+                  <div className="comment__part row d-flex p-3">
+                    <div className="col-lg-1 cmt__user__iamge">
                       <a class="nav-link p-0" href="#">
                         <img
                           src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.webp"
@@ -382,7 +382,7 @@ const Index = () => {
                         />
                       </a>
                     </div>
-                    <div className="cmt__contents px-3">
+                    <div className="col-lg-11 cmt__contents px-3">
                       <div className="user__details d-flex">
                         <h5> User Name </h5>
                         <span> @user123 </span>

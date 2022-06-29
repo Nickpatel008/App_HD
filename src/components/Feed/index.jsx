@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import FeedHome from "../Feed/FeedHome/index";
 import AllComm from "../Feed/AllCommunities/index";
 import Subscription from "../Feed/Subscription/index";
+import Collaborate from "../Feed/Collaborate/index";
 import Bookmark from "../Feed/Bookmark/index";
 
 const Index = () => {
@@ -16,7 +17,12 @@ const Index = () => {
       path: <FeedHome />,
       iconTag: "fa-solid fa-house",
     },
-    { name: "Collaborate", value: 2, iconTag: "fa-solid fa-user-group" },
+    {
+      name: "Collaborate",
+      value: 2,
+      iconTag: "fa-solid fa-user-group",
+      path: <Collaborate />,
+    },
     {
       name: "Subscription",
       value: 3,
@@ -65,9 +71,9 @@ const Index = () => {
   return (
     <>
       <section>
-        <div className="container-fluid HomeFeed__layout">
+        <div className="container-fluid HomeFeed__layout main__feed__wrapper">
           <div className="row pt-4">
-            <div className="col-lg-3 left__side__nav__menu ">
+            <div className="col-lg-2 left__side__nav__menu ">
               <nav class="nav flex-column lighten-3  mb-r font-weight-bold z-depth-0 pb-5 left__side__nav__menu__wrapper">
                 {leftSideBar.map((element, index) => {
                   return (
@@ -108,7 +114,9 @@ const Index = () => {
                 </a>
               </nav>
             </div>
-            <div className="col-lg-6">{isPath}</div>
+            <div className="col-lg-7">
+              <div className="middle__section">{isPath}</div>
+            </div>
             <div className="col-lg-3">
               <nav class="nav flex-column lighten-3 mb-r font-weight-bold z-depth-0 right__side__nav__menu__wrapper">
                 <div className="d-flex justify-content-between px-3">

@@ -3,7 +3,6 @@ import login__Modal_Img from "../../Assets/images/User_Profile-.png";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const Index = () => {
-  const navigate = useNavigate();
   const FeedPagePath = useLocation();
 
   const [isFeedPage, setIsFeedPage] = useState(false);
@@ -20,83 +19,206 @@ const Index = () => {
   return (
     <>
       <header>
-        <nav class="navbar navbar-expand-lg navbar-dark orange lighten-1">
-          <div
-            className={
-              isFeedPage ? "container-fluid HomeFeed__layout" : "container"
-            }
-          >
-            <a class="navbar-brand" href="#">
-              APP
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent-555"
-              aria-controls="navbarSupportedContent-555"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div
-              class="collapse navbar-collapse"
-              id="navbarSupportedContent-555"
-            >
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">
-                    Home
-                    <span class="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <NavLink class="nav-link" to="/feed">
-                    Feed
-                  </NavLink>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    Features
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    Pricing
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#OurTeam">
-                    OurTeam
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <button
-                    type="button"
-                    class="btn btn-orange btn-sm btn-rounded mx-0"
-                    data-toggle="modal"
-                    data-target="#basicExampleModal"
-                  >
-                    Log In
-                  </button>
-                </li>
-                {/* </ul>
+        {!isFeedPage ? (
+          <>
+            <nav class="navbar navbar-expand-lg navbar-dark orange lighten-1">
+              <div className="container">
+                <a class="navbar-brand" href="#">
+                  APP
+                </a>
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent-555"
+                  aria-controls="navbarSupportedContent-555"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div
+                  class="collapse navbar-collapse"
+                  id="navbarSupportedContent-555"
+                >
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#">
+                        Home
+                        <span class="sr-only">(current)</span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <NavLink class="nav-link" to="/feed">
+                        Feed
+                      </NavLink>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">
+                        Features
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">
+                        Pricing
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#OurTeam">
+                        OurTeam
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <button
+                        type="button"
+                        class="btn btn-orange btn-sm btn-rounded mx-0"
+                        data-toggle="modal"
+                        data-target="#basicExampleModal"
+                      >
+                        Log In
+                      </button>
+                    </li>
+                    {/* </ul>
               <ul class="navbar-nav ml-auto nav-flex-icons"> */}
-                <li class="nav-item avatar">
-                  <a class="nav-link p-0" href="#">
-                    <img
-                      src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.webp"
-                      class="rounded-circle z-depth-0"
-                      alt="avatar image"
-                      height="35"
-                    />
+                    <li class="nav-item avatar">
+                      <a class="nav-link p-0" href="#">
+                        <img
+                          src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.webp"
+                          class="rounded-circle z-depth-0"
+                          alt="avatar image"
+                          height="35"
+                        />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </>
+        ) : (
+          <>
+            {/* Need Navbar */}
+            <div className="feedHome__Navbar">
+              <nav class="navbar navbar-expand-lg navbar-light grey lighten-3 fixed-top scrolling-navbar p-0">
+                <div class="container">
+                  <a class="navbar-brand py-0" href="#">
+                    <i class="fab fa-3x fa-mdb"></i>
                   </a>
-                </li>
-              </ul>
+
+                  <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#basicExampleNav"
+                    aria-controls="basicExampleNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="basicExampleNav">
+                    <ul class="navbar-nav mr-auto text-uppercase font-weight-normal">
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">
+                          Home
+                        </a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">
+                          Contact
+                        </a>
+                      </li>
+                    </ul>
+
+                    <ul class="navbar-nav w-50 justify-content-center">
+                      <li class="nav-item w-75 ">
+                        <form class="form-inline my-lg-0 py-2 w-100">
+                          <input
+                            class="form-control w-100 pl-2"
+                            type="search"
+                            placeholder="Let's Find Your Solution"
+                            aria-label="Search"
+                          />
+                        </form>
+                      </li>
+                    </ul>
+
+                    <ul class="navbar-nav ml-auto nav-flex-icons align-items-center">
+                      <li class="nav-item">
+                        <button
+                          type="button"
+                          class="btn btn-outline-primary waves-effect d-flex align-items-center font-weight-bold"
+                        >
+                          <i class="fa-solid fa-key mr-2"></i>
+                          <span>get Invite Link</span>
+                        </button>
+                      </li>
+                      <li class="nav-item">
+                        <button
+                          type="button"
+                          class="btn btn-secondary d-flex align-items-center waves-effect font-weight-bold"
+                          data-toggle="modal"
+                          data-target="#modalLoginAvatar"
+                        >
+                          <i class="fa-solid fa-plus mr-2"></i>
+                          <span>Create</span>
+                        </button>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link font-weight-normal waves-effect waves-dark">
+                          <i class="fa-solid fa-inbox"></i>
+                          <span class="badge badge-danger ml-2 myBadges">
+                            1
+                          </span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link font-weight-normal waves-effect waves-dark">
+                          <i class="fa-regular fa-bell"></i>
+                          <span class="badge badge-danger ml-2 myBadges">
+                            9
+                          </span>
+                        </a>
+                      </li>
+                      <li class="nav-item avatar dropdown">
+                        <a
+                          class="nav-link dropdown-toggle"
+                          id="navbarDropdownMenuLink-55"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          <img
+                            src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.webp"
+                            class="rounded-circle z-depth-0"
+                            alt="avatar image"
+                            height="35"
+                          />
+                        </a>
+                        <div
+                          class="dropdown-menu dropdown-menu-lg-right dropdown-dark"
+                          aria-labelledby="navbarDropdownMenuLink-55"
+                        >
+                          <a class="dropdown-item" href="#">
+                            Action
+                          </a>
+                          <a class="dropdown-item" href="#">
+                            Another action
+                          </a>
+                          <a class="dropdown-item" href="#">
+                            Something else here
+                          </a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
             </div>
-          </div>
-        </nav>
+          </>
+        )}
 
         {/* MODELS */}
 
@@ -230,6 +352,54 @@ const Index = () => {
                   Save changes
                 </button>
               </div> */}
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="modal fade"
+          id="modalLoginAvatar"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="myModalLabel"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog cascading-modal modal-avatar modal-lg"
+            role="document"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <img
+                  src="https://mdbootstrap.com/img/Photos/Avatars/img%20%281%29.webp"
+                  alt="avatar"
+                  class="rounded-circle img-responsive"
+                />
+              </div>
+              <div class="modal-body text-center mb-1">
+                <div className="row px-5">
+                  <h5 class="mt-1 mb-2">Maria Doe</h5>
+                  <div className="col-lg-12">
+                    <div className="craete__question">
+                      <div className="modal__question__title">
+                   
+                      <div class="md-form">
+                    <input type="text" id="form-contact-name" class="form-control" />
+                    <label for="form-contact-name" class=""> Write Question Here... </label>
+                  </div>
+                      </div>
+                      <div className="modal__question__contenets">a</div>
+                      <div className="modal__code__editor">a</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-center mt-4">
+                  <button class="btn btn-cyan mt-1 font-weight-bold">
+                    POST <i class="fas fa-sign-in ml-1"></i>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

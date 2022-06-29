@@ -9,6 +9,21 @@ html{
     font-size: 12px;
 }
 
+.feedHome__Navbar .top-nav-collapse {
+    background: #f8bbd0 !important;
+  }
+
+  .feedHome__Navbar .navbar:not(.top-nav-collapse) {
+    background: transparent !important;
+  }
+
+  @media (max-width: 991px) {
+   .feedHome__Navbar .navbar:not(.top-nav-collapse) {
+    background: #f8bbd0 !important;
+   }
+  }
+
+
 .bg__header{
     background: rgba(163, 162, 162, 0.555);
     height: 95vh;
@@ -123,15 +138,13 @@ html{
     padding: 10px;
 }
 
-.comment__part{
-    border-bottom: 1px solid #b9b6b6d8;
-}
+ 
 
 /* LEFT MENU HOME FEED */
 
 .left__side__nav__menu__wrapper , .right__side__nav__menu__wrapper{
     /* background: rgba(201, 201, 201, 0.759); */
-    top: 5%;
+    top: 10%;
     position: sticky;
 }
 
@@ -168,4 +181,18 @@ html{
 
 .HomeFeed__layout{
     padding: 0 10%;
+}
+
+.main__feed__wrapper{
+    margin-top: 60px;
+}
+
+.cmt__contents{
+    border-bottom: 1px solid rgba(173, 173, 173, 0.778);
+}
+
+.myBadges{
+    position: relative;
+    top: -5px;
+    margin: 0 !important;
 }
