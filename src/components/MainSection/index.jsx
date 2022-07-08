@@ -1,6 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
+import Color_particlesConfig from "../../Configs/color_particlesConfig";
+
 import Navbar from "../Navbar/index";
 import Counter from "../Counter/index";
 import Magazine from "../Magazine/index";
@@ -10,9 +14,33 @@ import OurTeam from "../OurTeam/index";
 import Footer from "../Footer/index";
 
 const Index = () => {
+
+  const particlesInit = async (main) => {
+    console.log(main);
+
+    // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
+    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+    // starting from v2 you can add only the features you need reducing the bundle size
+    await loadFull(main);
+  };
+
+  const particlesLoaded = (container) => {
+    console.log(container);
+  };
+
   return (
     <>
-      <div className="container-fluid bg__header">
+<div className="main__body">
+
+<Particles
+        id="tsparticles"
+        init={particlesInit}
+        loaded={particlesLoaded}
+        options={Color_particlesConfig}
+      />
+
+
+<div className="container-fluid bg__header">
         <div class="container z-depth-0">
           <section class="dark-grey-text">
             <div class="row pr-lg-5">
@@ -27,13 +55,13 @@ const Index = () => {
               </div>
               <div class="col-md-5 d-flex align-items-center">
                 <div>
-                  <h3 class="font-weight-bold mb-4">Material Design Blocks</h3>
-
+                  <h3 class="font-weight-bold mb-4">
+                  Find the best answer to your technical question, help others answer theirs
+                  </h3>
+ 
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adip elit. Maiores
-                    deleniti explicabo voluptatem quisquam nulla asperiores
-                    aspernatur aperiam voluptate et consectetur minima delectus,
-                    fugiat eum soluta blanditiis adipisci, velit dolore magnam.
+                  Every developerdata scientistsystem adminmobile developergame developer has a
+tab open to Stack Overflow
                   </p>
 
                   <NavLink to="/signUp">
@@ -41,7 +69,7 @@ const Index = () => {
                       type="button"
                       class="btn btn-orange btn-rounded mx-0"
                     >
-                      Join Now
+                     Join the community
                     </button>
                   </NavLink>
                 </div>
@@ -50,6 +78,15 @@ const Index = () => {
           </section>
         </div>
       </div>
+
+
+</div>
+
+    
+  
+
+      <div className="bg-light">
+        
 
       <Counter />
 
@@ -60,6 +97,7 @@ const Index = () => {
       <OurApp />
 
       <OurTeam />
+      </div>
     </>
   );
 };

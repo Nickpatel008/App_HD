@@ -357,14 +357,14 @@ const Index = () => {
                           </ul>
 
                           <ul className="list-group">
-                            <li className="list-group-item bgTransparent p-0">
-                              <div class="">
-                                <a className="bgTransparent view overlay">
-                                  <i class="fa-solid fa-ellipsis"></i>
-                                  <div class="mask waves-effect waves-light rgba-white-slight"></div>
-                                </a>
-                              </div>
-                            </li>
+                            <li className="list-group-item bgTransparent view overlay">
+                                <div class="">
+                                  <a className="bgTransparent view overlay">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                  </a>
+                                  <div class="mask waves-effect waves-dark rgba-dark-slight"></div>
+                                </div>
+                              </li>
                           </ul>
                         </div>
                       </div>

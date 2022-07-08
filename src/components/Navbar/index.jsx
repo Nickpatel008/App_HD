@@ -22,7 +22,7 @@ const Index = () => {
         {!isFeedPage ? (
           <>
             <nav class="navbar navbar-expand-lg navbar-dark orange lighten-1">
-              <div className="container">
+              <div className="container Home__Navbar__container">
                 <a class="navbar-brand" href="#">
                   APP
                 </a>
@@ -100,7 +100,7 @@ const Index = () => {
             {/* Need Navbar */}
             <div className="feedHome__Navbar">
               <nav class="navbar navbar-expand-lg navbar-light grey lighten-3 fixed-top scrolling-navbar p-0">
-                <div class="container">
+                <div class="container-fluid feedHome__Navbar__container">
                   <a class="navbar-brand py-0" href="#">
                     <i class="fab fa-3x fa-mdb"></i>
                   </a>
@@ -377,8 +377,8 @@ const Index = () => {
                 />
               </div>
               <div class="modal-body text-center mb-1">
-                <div className="row px-5">
                   <h5 class="mt-1 mb-2">Maria Doe</h5>
+                <div className="row px-5">
                   <div className="col-lg-12">
                     <div className="craete__question">
                       <div className="modal__question__title">
@@ -388,8 +388,44 @@ const Index = () => {
                     <label for="form-contact-name" class=""> Write Question Here... </label>
                   </div>
                       </div>
-                      <div className="modal__question__contenets">a</div>
-                      <div className="modal__code__editor">a</div>
+                      <div className="modal__question__contenets">
+                      <div class="form-group purple-border">
+                <textarea
+                  class="form-control p-2"
+                  id="exampleFormControlTextarea4"
+                  rows="7"
+                  placeholder="Share Your Knowledge..."
+                ></textarea>
+              </div>
+
+
+                      </div>
+                      <div className="modal__code__editor">
+                        
+                      <div class="form-group purple-border">
+                <textarea
+                  class="form-control p-2"
+                  id="exampleFormControlTextarea4"
+                  rows="7"
+                  placeholder="Share Your Knowledge..."
+                ></textarea>
+              </div>
+
+                      </div>
+                      <div className="modal__code__editor">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                          </div>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                              aria-describedby="inputGroupFileAddon01" />
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                          </div>
+                        </div>
+                    </div>
+
+
                     </div>
                   </div>
                 </div>

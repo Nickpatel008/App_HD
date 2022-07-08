@@ -9,6 +9,27 @@ html{
     font-size: 12px;
 }
 
+.main__body{
+    /* background-color: red; */
+    height: 100vh;
+    overflow: hidden;
+}
+ 
+ canvas{ 
+    width: 100% !important;
+    height: 100px !important;
+    z-index: -1 !important;
+    position: absolute !important;
+}
+
+.feedHome__Navbar__container{
+    margin: 0 10%;
+}
+
+.Home__Navbar__container{
+    margin: 0 15%;
+}
+
 .feedHome__Navbar .top-nav-collapse {
     background: #f8bbd0 !important;
   }
@@ -129,7 +150,9 @@ html{
     cursor: pointer;
 }
 
-.craete__post__form textarea{
+.craete__post__form textarea,
+.modal__code__editor textarea,
+.modal__question__contenets textarea{
     min-height: 100px;
 }
 
@@ -179,7 +202,8 @@ html{
     border: none;
 }
 
-.HomeFeed__layout{
+.HomeFeed__layout
+{
     padding: 0 10%;
 }
 
