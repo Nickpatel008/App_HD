@@ -252,3 +252,57 @@ font-weight: 600;
     top: -5px;
     margin: 0 !important;
 }
+
+/* -------------------- My Profile -------------------- */
+
+.profile__label{
+    /* margin-top: 50px; */
+    margin: 0 10%;
+}
+
+.left__side__manu ul{
+    display: flex;
+    flex-direction: column; 
+}
+
+.bannerFrame{
+    /* background: rgba(193, 192, 192, 0.7); */
+    background: url('https://source.unsplash.com/WLUHO9A_xik/1600x900');
+    /* border-top-left-radius: 50px; */
+    border-radius: 80px 5px 10px 5px;
+    background-position: center;
+    background-size: cover; 
+    min-height: 250px;
+}
+
+.profilePic{
+    border: 5px solid while !important;
+}
+
+.profile__userDetails{
+    position: relative;
+    top: -30px;
+}
+
+.user__avtar__content{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+}
+.user__avtar__actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown-item:hover{
+    background: rgba(167, 3, 167, 0.891) !important;
+    color: white !important;
+    font-weight: 700 !important;
+    transition: .2s ease-in-out;
+}
+ 
+.Question__jumbotron{
+    background-image: url('https://mdbootstrap.com/img/Photos/Others/gradient12.webp');
+}

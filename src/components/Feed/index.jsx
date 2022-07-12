@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import FeedHome from "../Feed/FeedHome/index";
 import AllComm from "../Feed/AllCommunities/index";
 import Subscription from "../Feed/Subscription/index";
 import Collaborate from "../Feed/Collaborate/index";
 import Bookmark from "../Feed/Bookmark/index";
+import MyProfile from "../MyProfile/index";
 
 const Index = () => {
   const [isSelected, setIsSelected] = useState(1);
@@ -60,6 +61,19 @@ const Index = () => {
     },
   ];
 
+  const currentPath = useLocation()
+  useEffect(() => {
+    console.log(currentPath.pathname);
+    if(currentPath.pathname == '\MyProfile'){
+      setIsPath(<MyProfile />)
+    }else{
+      setIsPath(<FeedHome />)
+    }
+
+
+  }, [])
+  console.log(isPath)
+   
   console.log("isSelected", isSelected);
 
   const handlePages = (element) => {

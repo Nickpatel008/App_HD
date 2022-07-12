@@ -7,6 +7,7 @@ import SignUp from "../SignUp/index";
 import Feed from "../Feed/index";
 import FeedHome from "../Feed/FeedHome/index";
 import AllComm from "../Feed/AllCommunities/index";
+import MyProfile from "../MyProfile/index";
 
 const PrivateRoutes = ({ handlePath }) => {
   return (
@@ -41,6 +42,12 @@ const PrivateRoutes = ({ handlePath }) => {
           path="/AllComm"
           handlePath={handlePath("/AllComm")}
           element={<AllComm />}
+        ></Route>
+        <Route
+          exect
+          path="/myProfile"
+          handlePath={handlePath("/myProfile")}
+          element={<MyProfile />}
         ></Route>
 
         <Route path="*" element={<PageNotFound />}></Route>

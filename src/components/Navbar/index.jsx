@@ -6,10 +6,14 @@ const Index = () => {
   const FeedPagePath = useLocation();
 
   const [isFeedPage, setIsFeedPage] = useState(false);
+  const [isMyProfile, setIsMyProfile] = useState(false)
 
   useEffect(() => {
     console.log("111", FeedPagePath.pathname);
-    if (FeedPagePath.pathname == "/feed") {
+
+    FeedPagePath.pathname == "/MyProfile" ? setIsMyProfile(true) : setIsMyProfile(false)
+
+    if (FeedPagePath.pathname == "/feed" || FeedPagePath.pathname == "/MyProfile") {
       setIsFeedPage(true);
     } else {
       setIsFeedPage(false);
@@ -99,7 +103,8 @@ const Index = () => {
           <>
             {/* Need Navbar */}
             <div className="feedHome__Navbar">
-              <nav class="navbar navbar-expand-lg navbar-light grey lighten-3 fixed-top scrolling-navbar p-0">
+              {console.log(isMyProfile)}
+              <nav class={isMyProfile ? "navbar navbar-expand-lg navbar-light grey lighten-3 scrolling-navbar p-0" : "navbar navbar-expand-lg navbar-light grey lighten-3 fixed-top scrolling-navbar p-0"} >
                 <div class="container-fluid feedHome__Navbar__container">
                   <a class="navbar-brand py-0" href="#">
                     <i class="fab fa-3x fa-mdb"></i>
@@ -204,6 +209,11 @@ const Index = () => {
                           <a class="dropdown-item" href="#">
                             Action
                           </a>
+                          <a class="dropdown-item" href="#">
+                          <NavLink to="/MyProfile" class="dropdown-item"> My Profile </NavLink>
+                          </a>
+                         
+                        
                           <a class="dropdown-item" href="#">
                             Another action
                           </a>

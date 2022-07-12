@@ -13,9 +13,9 @@ const Layout = ({ children, isPath }) => {
 
   return (
     <>
-      {location.pathname !== "/signUp" && showBars ? <Navbar /> : null}
+      {location.pathname !== "/signUp"  ? <Navbar /> : null}
       {children}
-      {location.pathname !== "/signUp" && showBars ? <Footer /> : null}
+      {location.pathname !== "/signUp" ? <Footer /> : null}
     </>
   );
 };
