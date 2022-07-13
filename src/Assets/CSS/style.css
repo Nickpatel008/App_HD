@@ -257,12 +257,30 @@ font-weight: 600;
 
 .profile__label{
     /* margin-top: 50px; */
-    margin: 0 10%;
+    margin: 0 10%; 
+}
+
+.label__setting{
+    top: 10% !important;
+    position: sticky !important;
 }
 
 .left__side__manu ul{
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;  
+}
+
+ 
+
+.profileLabel{ 
+    top: 8% !important;
+    position: sticky !important;
+}
+ 
+
+.leftNav{ 
+    top: 10% !important;
+    position: sticky !important;
 }
 
 .bannerFrame{
@@ -273,6 +291,17 @@ font-weight: 600;
     background-position: center;
     background-size: cover; 
     min-height: 250px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+}
+
+.bannerFrame button{
+    background: rgba(255, 255, 255, 0.429);
+}
+
+.bannerFrame button:hover{
+    background: rgba(255, 255, 255, 0.298);
 }
 
 .profilePic{
@@ -305,4 +334,47 @@ font-weight: 600;
  
 .Question__jumbotron{
     background-image: url('https://mdbootstrap.com/img/Photos/Others/gradient12.webp');
+}
+ 
+.Article__jumbotron{
+    /* background-image: url('https://source.unsplash.com/collection/928423'); */
+    background-image: url('https://source.unsplash.com/random/?landscpae');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: 1;
+}
+
+.question__list__item{
+    border-radius: 10px 25px 10px 25px;
+    box-shadow: 7px 5px 5px rgba(224, 224, 224, 0.717);
+}
+
+.question__list__item:hover{
+    transition: all .4s ease-in-out;
+    box-shadow: 7px 5px 10px rgba(159, 159, 159, 0.911), 
+                7px 5px 10px rgba(224, 224, 224, 0.717);
+}
+
+.questions__actions__icons span {
+    font-size: 20px;
+}
+
+.banner__cover{
+    position: absolute; 
+    width: 100%;
+    height: 100%;
+    background-color:  rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+.jumbotron{
+    padding: 0;
+    width: 100%;
+    min-height: 200px;
+}
+
+.article__cards{
+    background-size: contain;
 }
