@@ -5,13 +5,13 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import Color_particlesConfig from "../../Configs/color_particlesConfig";
 
-import Navbar from "../Navbar/index";
 import Counter from "../Counter/index";
 import Magazine from "../Magazine/index";
 import Pricing from "../Pricing/index";
 import OurApp from "../OurApp/index";
 import OurTeam from "../OurTeam/index";
-import Footer from "../Footer/index";
+
+import hero_img from '../../Assets/images/hero__img.png'
 
 const Index = () => {
 
@@ -50,7 +50,8 @@ const Index = () => {
               <div class="col-lg-7 col-md-7 mb-4 ">
                 <div class="view">
                   <img
-                    src="https://mdbootstrap.com/img/illustrations/graphics(4).png"
+                    // src="https://mdbootstrap.com/img/illustrations/graphics(4).png"
+                    src={hero_img}
                     class="img-fluid"
                     alt="smaple image"
                   />

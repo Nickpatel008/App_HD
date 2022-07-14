@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import FeedHome from "../Feed/FeedHome/index";
-import AllComm from "../Feed/AllCommunities/index";
-import Subscription from "../Feed/Subscription/index";
-import Collaborate from "../Feed/Collaborate/index";
-import Bookmark from "../Feed/Bookmark/index";
+import FeedHome from "./FeedHome/index";
+import AllComm from "./AllCommunities/index";
+import Subscription from "./Subscription/index";
+import Collaborate from "./Collaborate/index";
+import Bookmark from "./Bookmark/index";
 import MyProfile from "../MyProfile/index";
 
 const Index = () => {

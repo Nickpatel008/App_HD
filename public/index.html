@@ -132,6 +132,8 @@
       })(jQuery);
 
       $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+
         $(".count-up").counter();
         $(".count1").counter();
         $(".count2").counter();
@@ -141,6 +143,7 @@
         setTimeout(function () {
           $(".count5").counter();
         }, 3000);
+
       });
     </script>
   </body>

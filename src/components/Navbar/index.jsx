@@ -1,25 +1,116 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , Component } from "react";
 import login__Modal_Img from "../../Assets/images/User_Profile-.png";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import axios from "axios"; 
+
+
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { Report } from 'notiflix/build/notiflix-report-aio';
+
+
+
+import {
+  MDBContainer,
+  MDBBtn,
+  MDBModal,
+  MDBModalBody,
+  MDBModalHeader,
+  MDBModalFooter
+} from 'mdbreact';
+
 
 const Index = () => {
+
   const FeedPagePath = useLocation();
+  const navigate = useNavigate()
 
   const [isFeedPage, setIsFeedPage] = useState(false);
-  const [isMyProfile, setIsMyProfile] = useState(false)
+  const [isMyProfile, setIsMyProfile] = useState(false);
+
+  const [isModelOpen, setIsModelOpen] = useState(false)
+  const [toggle, setToggle] = useState(true);
+
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
 
   useEffect(() => {
+
     console.log("111", FeedPagePath.pathname);
 
-    FeedPagePath.pathname == "/MyProfile" ? setIsMyProfile(true) : setIsMyProfile(false)
+    FeedPagePath.pathname == "/MyProfile"
+      ? setIsMyProfile(true)
+      : setIsMyProfile(false);
 
-    if (FeedPagePath.pathname == "/feed" || FeedPagePath.pathname == "/MyProfile") {
+    if (
+      FeedPagePath.pathname == "/feed" ||
+      FeedPagePath.pathname == "/MyProfile"
+    ) {
       setIsFeedPage(true);
     } else {
       setIsFeedPage(false);
     }
   }, [FeedPagePath]);
+ 
+  const handleSignIn = async () => { 
+    
+    Loading.hourglass(" Loading... ");
 
+    if(email != "" && password != ""){
+
+    setTimeout(async () => {
+      
+      await axios.post("/user/signIn" , { email , password })
+      .then((res) => {
+        Loading.remove(); 
+
+        Report.success(
+          'Sign up Successful',
+          '"Hurrey , You Connected With Us." <br/><br/>- Nick Patel',
+          'Okay',
+          );
+          
+        }).then(()=>{
+          navigate("/feed")
+      })
+      .catch((err) => {
+        
+        Loading.remove(); 
+
+        // Report.warning(err.errorCode , err.message , 'Okay')
+
+        Report.warning(
+          'Warning',
+          '"Their some issues with input..."',
+          'Okay',
+          );
+
+        // Report.warning(
+        //   'Notiflix Warning',
+        //   '"The peoples who want to live comfortably without producing and fatigue; they are doomed to lose their dignity, then liberty, and then independence and destiny." <br/><br/>- Mustafa Kemal Ataturk',
+        //   'Okay',
+        //   );
+
+        })
+
+      }, 1500);
+
+      } else{
+        alert("Something Went Wrong...")
+      }
+      
+  };
+
+
+  // const state = {
+  //   modal: false
+  // }
+
+  // const toggle = () => {
+  //   this.setState({
+  //     modal: !this.state.modal
+  //   });
+  // }
+ 
   return (
     <>
       <header>
@@ -76,11 +167,14 @@ const Index = () => {
                       <button
                         type="button"
                         class="btn btn-orange btn-sm btn-rounded mx-0"
-                        data-toggle="modal"
-                        data-target="#basicExampleModal"
+                        // data-toggle="modal"
+                        // data-target="#basicExampleModal"
+                        // onClick={()=>{setIsModelOpen(true)}}
                       >
                         Log In
                       </button>
+
+
                     </li>
                     {/* </ul>
               <ul class="navbar-nav ml-auto nav-flex-icons"> */}
@@ -104,7 +198,13 @@ const Index = () => {
             {/* Need Navbar */}
             <div className="feedHome__Navbar">
               {console.log(isMyProfile)}
-              <nav class={isMyProfile ? "navbar navbar-expand-lg navbar-light grey lighten-3 scrolling-navbar p-0" : "navbar navbar-expand-lg navbar-light grey lighten-3 fixed-top scrolling-navbar p-0"} >
+              <nav
+                class={
+                  isMyProfile
+                    ? "navbar navbar-expand-lg navbar-light grey lighten-3 scrolling-navbar p-0"
+                    : "navbar navbar-expand-lg navbar-light grey lighten-3 fixed-top scrolling-navbar p-0"
+                }
+              >
                 <div class="container-fluid feedHome__Navbar__container">
                   <a class="navbar-brand py-0" href="#">
                     <i class="fab fa-3x fa-mdb"></i>
@@ -210,10 +310,12 @@ const Index = () => {
                             Action
                           </a>
                           <a class="dropdown-item" href="#">
-                          <NavLink to="/MyProfile" class="dropdown-item"> My Profile </NavLink>
+                            <NavLink to="/MyProfile" class="dropdown-item">
+                              {" "}
+                              My Profile{" "}
+                            </NavLink>
                           </a>
-                         
-                        
+
                           <a class="dropdown-item" href="#">
                             Another action
                           </a>
@@ -270,7 +372,7 @@ const Index = () => {
 
                       <div class="col-lg-6 ">
                         <div class="">
-                          <section class=" text-center text-lg-left dark-grey-text">
+                          <section class="text-center text-lg-left dark-grey-text">
                             <div class="row d-flex justify-content-center">
                               <div class="col-md-12">
                                 <form class="text-center" action="#!">
@@ -279,6 +381,7 @@ const Index = () => {
                                     id="defaultLoginFormEmail"
                                     class="form-control mb-4"
                                     placeholder="E-mail"
+                                    onChange={ (e)=>{ setEmail(e.target.value) } }
                                   />
 
                                   <input
@@ -286,6 +389,7 @@ const Index = () => {
                                     id="defaultLoginFormPassword"
                                     class="form-control mb-4"
                                     placeholder="Password"
+                                    onChange={ (e)=>{ setPassword(e.target.value) } }
                                   />
 
                                   <div class="d-flex justify-content-around">
@@ -312,6 +416,9 @@ const Index = () => {
                                   <button
                                     class="btn btn-info btn-block my-4"
                                     type="submit"
+                                    onClick={()=>{
+                                      handleSignIn()
+                                    }}
                                   >
                                     Sign in
                                   </button>
@@ -350,18 +457,7 @@ const Index = () => {
                   </section>
                 </div>
               </div>
-              {/* <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button type="button" class="btn btn-primary">
-                  Save changes
-                </button>
-              </div> */}
+           
             </div>
           </div>
         </div>
@@ -387,55 +483,69 @@ const Index = () => {
                 />
               </div>
               <div class="modal-body text-center mb-1">
-                  <h5 class="mt-1 mb-2">Maria Doe</h5>
+                <h5 class="mt-1 mb-2">Maria Doe</h5>
                 <div className="row px-5">
                   <div className="col-lg-12">
                     <div className="craete__question">
                       <div className="modal__question__title">
-                   
-                      <div class="md-form">
-                    <input type="text" id="form-contact-name" class="form-control" />
-                    <label for="form-contact-name" class=""> Write Question Here... </label>
-                  </div>
+                        <div class="md-form">
+                          <input
+                            type="text"
+                            id="form-contact-name"
+                            class="form-control"
+                          />
+                          <label for="form-contact-name" class="">
+                            {" "}
+                            Write Question Here...{" "}
+                          </label>
+                        </div>
                       </div>
                       <div className="modal__question__contenets">
-                      <div class="form-group purple-border">
-                <textarea
-                  class="form-control p-2"
-                  id="exampleFormControlTextarea4"
-                  rows="7"
-                  placeholder="Share Your Knowledge..."
-                ></textarea>
-              </div>
-
-
+                        <div class="form-group purple-border">
+                          <textarea
+                            class="form-control p-2"
+                            id="exampleFormControlTextarea4"
+                            rows="7"
+                            placeholder="Share Your Knowledge..."
+                          ></textarea>
+                        </div>
                       </div>
                       <div className="modal__code__editor">
-                        
-                      <div class="form-group purple-border">
-                <textarea
-                  class="form-control p-2"
-                  id="exampleFormControlTextarea4"
-                  rows="7"
-                  placeholder="Share Your Knowledge..."
-                ></textarea>
-              </div>
-
+                        <div class="form-group purple-border">
+                          <textarea
+                            class="form-control p-2"
+                            id="exampleFormControlTextarea4"
+                            rows="7"
+                            placeholder="Share Your Knowledge..."
+                          ></textarea>
+                        </div>
                       </div>
                       <div className="modal__code__editor">
                         <div class="input-group">
                           <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                            <span
+                              class="input-group-text"
+                              id="inputGroupFileAddon01"
+                            >
+                              Upload
+                            </span>
                           </div>
                           <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="inputGroupFile01"
-                              aria-describedby="inputGroupFileAddon01" />
-                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            <input
+                              type="file"
+                              class="custom-file-input"
+                              id="inputGroupFile01"
+                              aria-describedby="inputGroupFileAddon01"
+                            />
+                            <label
+                              class="custom-file-label"
+                              for="inputGroupFile01"
+                            >
+                              Choose file
+                            </label>
                           </div>
                         </div>
-                    </div>
-
-
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -449,6 +559,24 @@ const Index = () => {
             </div>
           </div>
         </div>
+
+
+        <div className="">
+        <MDBContainer>
+          <MDBModal isOpen={toggle}>
+            <MDBModalHeader>XX</MDBModalHeader>
+            <MDBModalBody>(...)</MDBModalBody>
+            <MDBModalFooter>
+              <MDBBtn color='secondary' onClick={() => setToggle(false)}>
+                Close
+              </MDBBtn>
+            </MDBModalFooter>
+          </MDBModal>
+        </MDBContainer>
+        </div>
+
+
+
       </header>
     </>
   );

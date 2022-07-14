@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React , { useState } from "react";
 import "./Assets/CSS/style.css";
 import PrivateRoutes from "./components/common/PrivateRoutes";
 import Layout from "./components/Layout";

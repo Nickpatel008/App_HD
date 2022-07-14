@@ -1,40 +1,71 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { Report } from 'notiflix/build/notiflix-report-aio';
 
 import auth_IMG from "../../Assets/images/signupSVG.gif";
 import "../../Assets/CSS/style.css";
 
+
 const Index = () => {
+
+  const navigate = useNavigate()
  
   const [fname, setFname] = useState()
   const [lname, setLname] = useState()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
  
-
-  const letsLogin = () => {
-    console.log(fname);
-    console.log(lname);
-    console.log(email);
-    console.log(password);
-
-    const name = fname + " " + lname
+  
+  const letsSignUp = async () => { 
+    
+    Loading.hourglass(" Loading... ");
 
     if(email != "" && password != ""){
 
+    setTimeout(async () => {
       
-      axios.post("/user/signUp" , { name , email , password }).then((res)=>{
-        alert("Record Submitted")
-         
-      }).catch((error)=>{
-        alert("Something Went Wrong...")
-      })
-      
-    }else{
-      alert("else")
-    }
+      await axios.post("/user/signUp" , { fname, lname , email , password })
+      .then((res) => {
+        Loading.remove(); 
 
+        Report.success(
+          'Sign up Successful',
+          '"Hurrey , You Connected With Us." <br/><br/>- Nick Patel',
+          'Okay',
+          );
+          
+        }).then(()=>{
+          navigate("/")
+      })
+      .catch((err) => {
+        
+        Loading.remove(); 
+
+        // Report.warning(err.errorCode , err.message , 'Okay')
+
+        Report.warning(
+          'Warning',
+          '"Their some issues with input..."',
+          'Okay',
+          );
+
+        // Report.warning(
+        //   'Notiflix Warning',
+        //   '"The peoples who want to live comfortably without producing and fatigue; they are doomed to lose their dignity, then liberty, and then independence and destiny." <br/><br/>- Mustafa Kemal Ataturk',
+        //   'Okay',
+        //   );
+
+        })
+
+      }, 1500);
+
+      } else{
+        alert("Something Went Wrong...")
+      }
+      
   };
 
   return (
@@ -142,7 +173,7 @@ const Index = () => {
                       type="button"
                       class="btn btn-outline-secondary waves-effect font-weight-bold mt-5"
                       onClick={() => {
-                        letsLogin();
+                        letsSignUp();
                       }}
                     >
                       Sign Up
