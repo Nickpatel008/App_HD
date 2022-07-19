@@ -10,10 +10,7 @@ router.use(bodyParser.urlencoded({
   extended: true
 }));
 
-const userModel = require("../models/user");
-const {
-  user
-} = require("../utils/DB");
+const { user } = require("../utils/DB");
 
 router.get("/", async (req, res) => {
   const getAllUsers = await userModel.findAll();
@@ -38,22 +35,23 @@ router.post("/signIn", async (req, res) => {
           password: password,
         },
       });
-      console.log(getUser);
 
       if (getUser) {
         res.json({
           data: "Log In Successfull...",
         });
       } else {
-        res.json({
-          error: "Invalid Data",
-        });
+        res.status(401).send({
+          errorCode : 401,
+          msg : "Something Went Wrong..."
+        })
       }
     }
   } catch (err) {
-    res.json({
-      error: err,
-    });
+    res.status(401).send({
+      errorCode : 401,
+      msg : "Something Went Wrong..."
+    })
   }
 });
 
@@ -66,7 +64,6 @@ router.post("/signUp", async (req, res) => {
       email,
       password
     } = req.body;
-
 
     if (email !== null) {
 
@@ -91,11 +88,46 @@ router.post("/signUp", async (req, res) => {
     }
 
   } catch (error) {
+    console.log("Something Went Wrong...");
     res.status(401).send({
       errorCode : 401,
       msg : "Something Went Wrong..."
     })
   }
 });
+
+router.get('/getUserDetails/:email' , async (req , res) => {
+
+  try {
+
+    const email = req.params.email;
+
+    const UserData = await user.findOne({
+     where : {
+      email : email
+     } 
+    }) 
+
+    if(UserData){
+      res.json({
+        msg: "User Data Fetched Successfully...",
+        data : UserData
+      });
+    }
+    else{
+      res.status(401).send({
+        errorCode : 401,
+        msg : "Something Went Wrong..."
+      })
+    }
+    
+  } catch (error) {
+    res.status(401).send({
+      errorCode : 401,
+      msg : "Something Went Wrong..."
+    })
+  }
+
+})
 
 module.exports = router;
