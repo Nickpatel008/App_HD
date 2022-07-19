@@ -33,7 +33,8 @@ db.sequelize = sequelize;
 
 db.user = require("../models/user")(sequelize, DataTypes);
 db.subscription = require("../models/subscription")(sequelize, DataTypes);
-db.question = require('../models/questionController')(sequelize , DataTypes);
+db.question = require('../models/questionModel')(sequelize , DataTypes);
+db.article = require('../models/articleModel')(sequelize , DataTypes);
 
 // Sync
 

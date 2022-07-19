@@ -10,6 +10,7 @@ require("./utils/DB");
 
 const userRoute = require("./routers/user_route");
 const questionsRoute = require("./routers/questionsRoute");
+const articlesRoute = require("./routers/articlesRoute");
 const subscriptionRoute = require("./routers/subscription_route");
 
 app.get("/", (req, res) => {
@@ -22,6 +23,7 @@ app.get("/home", (req, res) => {
 
 app.use("/user", userRoute);
 app.use("/Questions", questionsRoute);
+app.use("/Articles", articlesRoute);
 app.use("/buySubscription", subscriptionRoute);
 
 app.listen(port, () => {
