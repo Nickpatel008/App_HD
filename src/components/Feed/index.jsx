@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import FeedHome from "./FeedHome/index";
 import AllComm from "./AllCommunities/index";
 import Subscription from "./Subscription/index";
@@ -62,6 +62,18 @@ const Index = () => {
   ];
 
   const currentPath = useLocation()
+  const navigate = useNavigate();
+
+  useEffect(() => {
+
+    if(!sessionStorage.getItem('is_user_online')){
+      navigate('/')
+    }else{
+      navigate('/feed')
+    }
+
+  }, [])
+
   useEffect(() => {
     console.log(currentPath.pathname);
     if(currentPath.pathname == '\MyProfile'){

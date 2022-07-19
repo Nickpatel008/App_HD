@@ -1,11 +1,111 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import heart_icon from "../../Assets/images/icons/like_icon.png";
 import comment_icon from "../../Assets/images/icons/comment_icon.png";
 import share_icon from "../../Assets/images/icons/share_icon.png";
 import views_icon from "../../Assets/images/icons/views_icon.png";
 import votes_icon from "../../Assets/images/icons/vote_icon.png";
 
+
+import { Loading } from "notiflix/build/notiflix-loading-aio";
+import { Report } from "notiflix/build/notiflix-report-aio";
+
+import { MDBBtn, MDBModal, MDBModalDialog, MDBModalContent, MDBModalHeader, MDBModalTitle, MDBModalBody, MDBModalFooter } from "mdb-react-ui-kit";
+import axios from "axios";
+
+
 const Index = () => {
+   
+  const [userData, setUserData] = useState({
+    user_id : 0 , 
+    email : ""
+  })
+  
+  const [articleData, setArticleData] = useState({
+    article_title : "",
+    article_desc : "",
+  })
+
+  const [isModelOpen, setIsModelOpen] = useState(false);
+
+  useEffect(() => {
+    
+    GetUserDetails()
+   
+  }, [])
+
+  const GetUserDetails = async () => {
+ 
+    try {
+
+      const email = sessionStorage.getItem('is_user_email')
+      await axios.get(`/user/getUserDetails/${email}`).then((res)=>{
+        setUserData({ ...userData , user_id : res.data.data.user_id , email : res.data.data.email })
+      })
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
+
+
+  const CreateNewArticle = () => {
+
+    Loading.hourglass("Loading... ");
+
+    try {
+  
+      if (articleData.article_title != "" && articleData.article_desc != "") {
+  
+        setTimeout(async () => {
+          await axios
+            .post("/Questions/addQuestion", { email : userData.email , user_id : userData.user_id , article_title : articleData.article_title , article_desc : articleData.article_desc })
+            .then((res) => {
+  
+              Loading.remove();
+  
+              setIsModelOpen(false)
+  
+              Report.success(
+                "Question Has Been Added...",
+                '"Hurrey , You Connected With Us." <br/><br/>- Nick Patel',
+                "Okay"
+              );
+  
+              setArticleData({}) 
+  
+            })
+            .catch((err) => {
+              Loading.remove();
+  
+              Report.warning(
+                "Warning",
+                '"Their some issues with input..."',
+                "Okay"
+              );
+  
+              setIsModelOpen(false)
+               
+            });
+        }, 1500);
+      } else {
+        Loading.remove();
+  
+              Report.warning(
+                "Warning",
+                '"Their some issues with input..."',
+                "Okay"
+              );
+      }
+    }catch(err){
+      console.log("Error") 
+    }
+
+  }
+
+  
+
   return (
     <>
       <section>
@@ -625,9 +725,16 @@ const Index = () => {
                                   <div className="row">
                                     <div class="container mt-5">
                                       <section class="">
-                                        <h3 class="text-center font-weight-bold mb-5">
-                                          Latest Articles
-                                        </h3>
+
+                                        <div className="row mb-5">
+                                          <div className="col-lg-12 text-center align-items-center">
+
+                                              <span class="h3 text-center font-weight-bold">
+                                                Latest Articles
+                                              </span>
+                                              <button className="btn btn-outline-success float-right waves-effect" onClick={() => setIsModelOpen(true)}> create </button>
+                                            </div>
+                                          </div>
 
                                         <div class="row">
                                           <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
@@ -843,6 +950,137 @@ const Index = () => {
             </div>
           </div>
         </div>
+
+
+
+
+        <div className="">
+          {/* <MDBBtn onClick={toggle}>LAUNCH DEMO MODAL</MDBBtn> */}
+          <MDBModal show={isModelOpen} setShow={setIsModelOpen} tabIndex="-1">
+            <MDBModalDialog size='lg'>
+              <MDBModalContent>
+                <MDBModalHeader>
+                  <MDBModalTitle>
+
+                  <h4 class="modal-title" id="exampleModalLabel">
+                  Create Articles
+                </h4>
+
+                  </MDBModalTitle>
+                  <MDBBtn
+                    className="btn-close"
+                    color="none"
+                    onClick={isModelOpen}
+                  ></MDBBtn>
+                </MDBModalHeader>
+                <MDBModalBody>
+
+                <div class="container my-3 py-3 z-depth-0">
+                  <section class="text-center dark-grey-text">
+                    <div class="row">
+                      <div class="col-lg-6 mb-lg-0 mb-md-4">
+                        <div class="view overlay z-depth-0-half">
+                          <img
+                            src="https://mdbootstrap.com/img/Photos/Slides/img%20(5).jpg"
+                            // src={login__Modal_Img}
+                            class="img-fluid"
+                            alt=""
+                          />
+                          <a href="#">
+                            <div class="mask rgba-white-slight"></div>
+                          </a>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-6 ">
+
+
+                      <div className="craete__question">
+                      <div className="modal__question__title">
+                        <div class="md-form">
+                          <input
+                            type="text"
+                            id="form-contact-name"
+                            class="form-control"
+                            onChange={ (e) => setArticleData( { ...articleData , article_title : e.target.value } ) }
+                          />
+                          <label for="form-contact-name" class="">
+                  Your Article Titile Here...
+                          </label>
+                        </div>
+                      </div>
+                      <div className="modal__question__contenets">
+                        <div class="form-group purple-border">
+                          <textarea
+                            class="form-control p-2"
+                            id="exampleFormControlTextarea4"
+                            rows="7"
+                            placeholder="Share Your Knowledge..."
+                            onChange={ (e) => setArticleData( { ...articleData , article_desc : e.target.value } ) }
+                          ></textarea>
+                        </div>
+                      </div> 
+                      <div className="modal__code__editor">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span
+                              class="input-group-text"
+                              id="inputGroupFileAddon01"
+                            >
+                              Upload
+                            </span>
+                          </div>
+                          <div class="custom-file">
+                            <input
+                              type="file"
+                              class="custom-file-input"
+                              id="inputGroupFile01"
+                              aria-describedby="inputGroupFileAddon01"
+                            />
+                            <label
+                              class="custom-file-label"
+                              for="inputGroupFile01"
+                            >
+                              Choose file
+                            </label>
+                          </div>
+                          
+                        </div>
+                        <button
+                                    class="btn btn-info btn-block my-4"
+                                    type="button"
+                                    onClick={() => { 
+                                      CreateNewArticle()
+                                    }}
+                                  >
+                                    Sign in
+                                  </button>
+                      </div>
+                    </div>
+ 
+                      </div>
+                    </div>
+                  </section>
+                </div>
+
+
+                </MDBModalBody>
+
+                {/* <MDBModalFooter>
+                  <MDBBtn
+                    color="secondary"
+                    onClick={() => setIsModelOpen(false)}
+                  >
+                    Close
+                  </MDBBtn>
+                  <MDBBtn>Save changes</MDBBtn>
+                </MDBModalFooter> */}
+              </MDBModalContent>
+            </MDBModalDialog>
+          </MDBModal>
+        </div>
+
+
       </section>
     </>
   );

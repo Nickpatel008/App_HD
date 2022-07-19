@@ -21,7 +21,7 @@ const Index = () => {
   
   const letsSignUp = async () => { 
     
-    Loading.hourglass(" Loading... ");
+    Loading.hourglass("Loading... ");
 
     if(email != "" && password != ""){
 
@@ -37,9 +37,8 @@ const Index = () => {
           'Okay',
           );
           
-        }).then(()=>{
           navigate("/")
-      })
+        })
       .catch((err) => {
         
         Loading.remove(); 
